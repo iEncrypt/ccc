@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COD color Picker</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {background: black; color:white !important;font-family: 'Arial', sans-serif; color:black}
+        .jumbotron {background: #1e1e1e}
+        code {background: black;color: #00FF00}
+        #picker { width: 200px; height: 200px;display: inline-block }
+        #slider { width: 30px; height: 200px;display: inline-block }
+        
+    </style>
+    <script src='jscolor.min.js'></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Encrypt's COD Color Picker</h1>
+        <p class="text-center">COD Color Picker tool perfect for making configs</p>
+        <div class="jumbotron">
+            <h2>Tool</h2>
+                <div class="container" id="outt">
+                <h2 id="rgb">Output Here</h2>
+            </div>
+            <button class="btn btn-default jscolor {onFineChange:'update(this)'}" style="border:2px solid black"> Pick a color</button>
+
+        </div>   
+        <div class="jumbotron">
+            <h2>Example of usage:</h2>
+            <p>Let's say you choose the color: <code>0.5 0.6 0.5</code>.
+            <br>We would add that to apart of the config i.e darktint like so:<br>
+            <code>seta r_filmTweakDarkTint "0.5 0.6 0.5"</code></p>
+        </div>
+    </div>
+    <script>
+    function update(picker) {
+        var a = Math.round(picker.rgb[0]) / 255;
+        var b = Math.round(picker.rgb[1]) / 255;
+        var c = Math.round(picker.rgb[2]) / 255;
+        var d = a.toString().substr(0, 4);
+        var e = b.toString().substr(0, 4);
+        var f = c.toString().substr(0, 4);
+        var x = " " + " ";
+        document.getElementById('rgb').innerHTML = d + x + e + x + f;
+    }
+    </script>
+</body>
+</html>
